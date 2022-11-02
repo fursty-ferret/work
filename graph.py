@@ -5,7 +5,7 @@ data = pd.read_csv('data.csv')
 year = data['year']
 pop = data['pop']
 base = 55000
-toppop = 75000
+peak = 75001
 topyear = 2050
 pre2022, post2022, poppre, poppost = [], [], [], []
 for i in range(len(year)):
@@ -23,12 +23,12 @@ for i in range(len(year)):
 
 plt.plot(post2022, poppost, color='#444444', linestyle='--')
 plt.plot(pre2022, poppre, color='#444444',)
-plt.plot(topyear, toppop)
+plt.plot(topyear, peak)
 
 plt.fill_between(year, pop, base, where=(year <= 2022), color='lightblue', label ='Actual growth from 2000 to 2022')
 plt.fill_between(year, pop, base, where=(year >= 2022), color='lightgray', label='Predicted growth from 2022 to 2050')
 
-plt.yticks(range(base,75001, 5000), fontsize=14)
+plt.yticks(range(base,peak, 5000), fontsize=14)
 plt.xticks(fontsize=14)
 plt.legend(loc='upper left')
 plt.ylabel('Population (000s)', labelpad=7, fontsize=14)
